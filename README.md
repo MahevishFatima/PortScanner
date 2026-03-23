@@ -35,7 +35,7 @@ python portscanner.py [target] [start_port] [end_port]
 
 ## Example
 ```bash
-python portscanner.py 192.168.1.1 1 65535
+python portscanner.py 192.168.100.50 1 1000
 ```
 This command scans ports 1 to 1000 on the IP address `192.168.100.50`.
 
