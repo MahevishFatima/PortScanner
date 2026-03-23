@@ -16,7 +16,7 @@ is a simple and efficient port scanner that quickly identifies open ports on a t
 ## Installation
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/geniuszlyy/GenSPScanner.git
+   https://github.com/MahevishFatima/PortScanner.git
    ```
 2. **Install dependencies**:
    ```bash
