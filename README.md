@@ -100,17 +100,7 @@ python scanner.py example.com 20 100
 
 ## 📌 Sample Output
 
-```
-GenSPScanner • Advanced Port Scanner
-
-Resolved Target: 192.168.100.50 → 192.168.100.50
-
-[OPEN] 192.168.100.50:135 (epmap)
-[OPEN] 192.168.100.50:139 (netbios-ssn)
-[OPEN] 192.168.100.50:445 (microsoft-ds)
-
-Scanning completed.
-```
+<img width="651" height="588" alt="image" src="https://github.com/user-attachments/assets/f53f1867-55d6-4ab8-9047-d930d8023c12" />
 
 ---
 
