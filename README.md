@@ -1,48 +1,162 @@
-# GenSPScanner
-is a simple and efficient port scanner that quickly identifies open ports on a target IP or domain
+# 🔍 GenSPScanner – Advanced Multithreaded Port Scanner
 
-## Overview
-**GenSPScanner** is a simple and efficient port scanning tool. It allows users to scan a range of ports on a specified target IP address or domain, identifying open ports and potential vulnerabilities.
+GenSPScanner is a fast and efficient multithreaded TCP port scanner built in Python. It scans a target system (IP or domain) for open ports, identifies common services, and provides clean, readable output.
 
-## Features
-- **Multithreaded Scanning**: Utilizes multiple threads to accelerate the scanning process.
-- **Color-Coded Output**: Provides color-coded output for better readability.
-- **Error Handling**: Includes checks for valid IP addresses, domain names, and port ranges.
+---
 
-## Requirements
-- Python 3.x
-- `colorama` package (for colored output in the terminal)
+## 🚀 About the Project
 
-## Installation
-1. **Clone the repository**:
-   ```bash
-   https://github.com/MahevishFatima/PortScanner.git
+GenSPScanner is designed to demonstrate core cybersecurity and networking concepts such as:
+
+* TCP socket programming
+* Multithreading for performance
+* Port scanning techniques
+* Service identification using standard port mappings
+
+This tool is ideal for beginners in cybersecurity who want to understand how scanners like Nmap work at a basic level.
+
+---
+
+## ⚙️ Features
+
+* ✅ Scan open ports on a target system
+* ✅ Accept both IP address and domain name
+* ✅ Automatic domain → IP resolution
+* ✅ Multithreaded scanning (fast performance)
+* ✅ Displays service names (HTTP, FTP, SSH, etc.)
+* ✅ Clean and colored terminal output
+* ✅ Exception handling for stability
+* ✅ Queue-based thread management (producer-consumer model)
+
+---
+
+## 🧠 How It Works
+
+1. User provides:
+
+   * Target (IP or domain)
+   * Start port
+   * End port
+
+2. Domain is resolved to IP using:
+
+   ```python
+   socket.gethostbyname()
    ```
-2. **Install dependencies**:
-   ```bash
-   pip install colorama
-   ```
 
-## Usage
-To use GenSPScanner, execute the script with the following command:
+3. Ports are added to a queue
+
+4. Multiple threads:
+
+   * Pull ports from queue
+   * Attempt TCP connection using `socket.connect_ex()`
+
+5. If connection succeeds:
+
+   * Port is OPEN
+   * Service name is identified using:
+
+     ```python
+     socket.getservbyport()
+     ```
+
+---
+
+## 🛠️ Installation
+
+### 1. Clone the Repository
+
 ```bash
-python portscanner.py [target] [start_port] [end_port]
+git clone https://github.com/MahevishFatima/PortScanner.git
 ```
-- **target**: The IP address or domain name to scan.
-- **start_port**: The starting port number in the range.
-- **end_port**: The ending port number in the range.
 
+### 2. Install Dependencies
 
-## Example
 ```bash
-python portscanner.py 192.168.100.50 1 1000
+pip install colorama
 ```
-This command scans ports 1 to 1000 on the IP address `192.168.100.50`.
 
-<img width="590" height="234" alt="image" src="https://github.com/user-attachments/assets/4736299d-a40d-481e-8628-fd5410019f0a" />
+---
 
-## Output
-- Open ports are displayed in a color-coded format indicating successful connections.
-- Errors such as invalid IP addresses, domain names, or port ranges are highlighted with specific messages.
+## ▶️ Usage
 
+```bash
+python scanner.py [target] [start_port] [end_port]
+```
 
+### Example:
+
+```bash
+python scanner.py 192.168.1.1 1 1000
+```
+
+Or with domain:
+
+```bash
+python scanner.py example.com 20 100
+```
+
+---
+
+## 📌 Sample Output
+
+```
+GenSPScanner • Advanced Port Scanner
+
+Resolved Target: 192.168.100.50 → 192.168.100.50
+
+[OPEN] 192.168.100.50:135 (epmap)
+[OPEN] 192.168.100.50:139 (netbios-ssn)
+[OPEN] 192.168.100.50:445 (microsoft-ds)
+
+Scanning completed.
+```
+
+---
+
+## 📊 Common Ports Detected
+
+| Port | Service | Description             |
+| ---- | ------- | ----------------------- |
+| 21   | FTP     | File Transfer Protocol  |
+| 22   | SSH     | Secure Shell            |
+| 23   | Telnet  | Remote login (insecure) |
+| 25   | SMTP    | Email transfer          |
+| 80   | HTTP    | Web traffic             |
+| 443  | HTTPS   | Secure web traffic      |
+| 445  | SMB     | Windows file sharing    |
+
+---
+
+## ⚠️ Limitations
+
+* Uses **standard port mapping**, not real service detection
+* No **banner grabbing** (cannot detect service versions)
+* Works only for **TCP connect scan**
+* May be slower on very large ranges
+
+---
+
+## 🛡️ Disclaimer
+
+This tool is created for **educational purposes only**.
+Do not use it on networks or systems without proper authorization.
+
+---
+
+## 👨‍💻 Author
+
+**Mahevish Fatima**
+Cybersecurity Enthusiast
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+* Star ⭐ the repo
+* Share with others
+* Contribute improvements
+
+---
